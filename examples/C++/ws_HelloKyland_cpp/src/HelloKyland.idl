@@ -1,0 +1,5 @@
+##自定义数据类型
+struct HelloKyland
+{
+	string message;
+};
