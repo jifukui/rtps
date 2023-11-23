@@ -17,7 +17,7 @@
 ###############################################################################
 cmake_minimum_required(VERSION 3.5)
 cmake_policy(VERSION 3.5...3.13)
-
+set(CMAKE_BUILD_TYPE "debug")
 # Set CMAKE_BUILD_TYPE to Release by default.
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     message(STATUS "Setting build type to 'Release' as none was specified.")
@@ -28,7 +28,9 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 ###############################################################################
-# Project                                                                     #
+# Project    
+# jifukui
+# 设置版本号                                                                 #
 ###############################################################################
 project(fastrtps VERSION "2.6.0" LANGUAGES C CXX)
 
@@ -39,8 +41,10 @@ message(STATUS "Version: ${PROJECT_VERSION}")
 
 ###############################################################################
 # eProsima build options
+# jifukui
+# 设置打印信息
 ###############################################################################
-option(EPROSIMA_BUILD "Activate internal building" OFF)
+option(EPROSIMA_BUILD "Activate internal building" ON)
 
 ###############################################################################
 # Warning level
@@ -135,7 +139,7 @@ set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installa
 if(EPROSIMA_BUILD)
     set(INTERNAL_DEBUG ON)
 endif()
-
+add_definitions(-D__INTERNALDEBUG)
 ###############################################################################
 # Load CMake modules
 ###############################################################################
@@ -240,13 +244,14 @@ unset(LOG_NO_INFO_HELP)
 option(LOG_NO_WARNING "Do not compile Warning Log level" OFF)
 
 option(LOG_NO_ERROR "Do not compile Error Log level" OFF)
-
+#jifukui
+#设置输出日志信息
 cmake_dependent_option(
     FASTDDS_ENFORCE_LOG_INFO
     "The LOG_NO_INFO option must be enforced regardless of selected configuration"
-    OFF
+    ON
     "NOT LOG_NO_INFO"
-    OFF)
+    ON)
 
 if(LOG_NO_INFO)
     set(HAVE_LOG_NO_INFO 1)
