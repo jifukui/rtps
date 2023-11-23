@@ -130,3 +130,5 @@ int main(int argc, char** argv)
     delete pub;
     return 0;
 }
+// 编译指令
+// g++ HelloKylandPublisher.cpp  HelloKylandPubSubTypes.cxx  HelloKyland.cxx -L=./   -lfastcdr -lfastrtps
