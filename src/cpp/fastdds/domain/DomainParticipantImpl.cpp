@@ -21,7 +21,10 @@
 #include <string>
 
 #include <asio.hpp>
-
+////////////////////////////////////////////////////////////////
+//jifukui
+#include <iostream>
+////////////////////////////////////////////////////////////////
 #include <fastdds/domain/DomainParticipantImpl.hpp>
 
 #include <fastdds/core/policy/QosPolicyUtils.hpp>
@@ -151,7 +154,25 @@ DomainParticipantImpl::DomainParticipantImpl(
     , rtps_listener_(this)
 {
     participant_->impl_ = this;
+    std::cout<<"hello jifukui tester!"<<std::endl;
+    #if HAVE_LOG_NO_INFO
+    std::cout<<"HAVE_LOG_NO_INFO"<<std::endl;
+    #endif
+    #if (defined(__INTERNALDEBUG) || defined(_INTERNALDEBUG))
+    std::cout<<"INTERNALDEBUG"<<std::endl;
+    #endif
+    #if !HAVE_LOG_NO_INFO &&  \
+    (defined(FASTDDS_ENFORCE_LOG_INFO) || \
+    ((defined(__INTERNALDEBUG) || defined(_INTERNALDEBUG)) && (defined(_DEBUG) || defined(__DEBUG) || \
+    !defined(NDEBUG))))
+    std::cout<<"the status is 1"<<std::endl;
+#elif (__INTERNALDEBUG || _INTERNALDEBUG)
+    std::cout<<"the status is 2"<<std::endl;
+#else
+    std::cout<<"the status is 3"<<std::endl;
+#endif // ifndef LOG_NO_INFO
 
+    logInfo(PARTICIPANT, "jifukui log rest");
     PublisherAttributes pub_attr;
     XMLProfileManager::getDefaultPublisherAttributes(pub_attr);
     set_qos_from_attributes(default_pub_qos_, pub_attr);
