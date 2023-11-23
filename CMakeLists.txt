@@ -236,9 +236,14 @@ is set to on.")
 if(CMAKE_BUILD_TYPE MATCHES "^([Dd][Ee][Bb][Uu][Gg])$"  # single config generator
    OR ("Debug" IN_LIST CMAKE_CONFIGURATION_TYPES))      # multi config generator
     option(LOG_NO_INFO ${LOG_NO_INFO_HELP} OFF)
+    message("is debug enabled")
+    option(LOG_NO_INFO "debug mode" OFF)
+    set(LOG_NO_INFO OFF)
 else()
     option(LOG_NO_INFO ${LOG_NO_INFO_HELP} ON)
+    message("is debug disabled")
 endif()
+message(STATUS "LOG_NO_INFO:  " ${LOG_NO_INFO})
 unset(LOG_NO_INFO_HELP)
 
 option(LOG_NO_WARNING "Do not compile Warning Log level" OFF)
@@ -253,12 +258,13 @@ cmake_dependent_option(
     "NOT LOG_NO_INFO"
     ON)
 
+message(STATUS "LOG_NO_INFO:  " ${LOG_NO_INFO})
 if(LOG_NO_INFO)
     set(HAVE_LOG_NO_INFO 1)
 else()
     set(HAVE_LOG_NO_INFO 0)
 endif()
-
+message(STATUS "HAVE_LOG_NO_INFO:  " ${HAVE_LOG_NO_INFO})
 if(LOG_NO_WARNING)
     set(HAVE_LOG_NO_WARNING 1)
 else()

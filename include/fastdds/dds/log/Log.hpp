@@ -18,6 +18,7 @@
 #include <fastrtps/fastrtps_dll.h>
 #include <thread>
 #include <sstream>
+#include <iostream>
 #include <atomic>
 #include <regex>
 
@@ -234,7 +235,7 @@ protected:
 #if !HAVE_LOG_NO_WARNING
 #define logWarning_(cat, msg)                                                                                       \
     {                                                                                                               \
-        using namespace eprosima::fastdds::dds;                                                                     \
+        using namespace eprosima::fastdds::dds;                                                                     \                                                                
         if (Log::GetVerbosity() >= Log::Kind::Warning)                                                              \
         {                                                                                                           \
             std::stringstream fastdds_log_ss_tmp__;                                                                 \
@@ -263,21 +264,24 @@ protected:
     ((defined(__INTERNALDEBUG) || defined(_INTERNALDEBUG)) && (defined(_DEBUG) || defined(__DEBUG) || \
     !defined(NDEBUG))))
 #define logInfo_(cat, msg)                                                                              \
-    {                                                                                                   \
+    {                                                                                                   \                                                                                  
         using namespace eprosima::fastdds::dds;                                                         \
-        if (Log::GetVerbosity() >= Log::Kind::Info)                                                     \
+        if (1)                                                     \
         {                                                                                               \
             std::stringstream fastdds_log_ss_tmp__;                                                     \
+            std::cout<<"jifukui test log info"<<std::endl;                                              \
             fastdds_log_ss_tmp__ << msg;                                                                \
             Log::QueueLog(fastdds_log_ss_tmp__.str(), Log::Context{__FILE__, __LINE__, __func__, #cat}, \
                     Log::Kind::Info);                                                                   \
         }                                                                                               \
-    }
+    }                                                                                               
 #elif (__INTERNALDEBUG || _INTERNALDEBUG)
 #define logInfo_(cat, msg)                                  \
     {                                                       \
+        std::cout<<"jifukui test log info __INTERNALDEBUG || _INTERNALDEBUG"<<std::endl; \
         auto fastdds_log_lambda_tmp__ = [&]()               \
                 {                                           \
+                    std::cout<<"jifukui test log info __INTERNALDEBUG || _INTERNALDEBUG call"<<std::endl; \
                     std::stringstream fastdds_log_ss_tmp__; \
                     fastdds_log_ss_tmp__ << msg;            \
                 };                                          \
