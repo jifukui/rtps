@@ -43,6 +43,7 @@ TopicImpl::TopicImpl(
     , listener_(listen)
     , user_topic_(nullptr)
 {
+    logError(RTPS_PARTICIPANT, "jifukui");
 }
 
 TopicImpl::~TopicImpl()

@@ -173,6 +173,7 @@ DomainParticipantImpl::DomainParticipantImpl(
 #endif // ifndef LOG_NO_INFO
 
     logError(PARTICIPANT, "jifukui log rest");
+    Log::SetVerbosity(Log::Kind::Warning);
     PublisherAttributes pub_attr;
     XMLProfileManager::getDefaultPublisherAttributes(pub_attr);
     set_qos_from_attributes(default_pub_qos_, pub_attr);

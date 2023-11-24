@@ -42,6 +42,7 @@ Publisher::Publisher(
     : DomainEntity(mask)
     , impl_(dp->create_publisher(qos, listener, mask)->impl_)
 {
+    logError(RTPS_PARTICIPANT, "publisher");
 }
 
 Publisher::~Publisher()
