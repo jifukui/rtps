@@ -30,6 +30,7 @@ DomainParticipant::DomainParticipant(
     : Entity(mask)
     , impl_(nullptr)
 {
+    logError(DOMAINPARTICIPANT, "jifukui");
 }
 
 DomainParticipant::~DomainParticipant()

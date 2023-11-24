@@ -98,11 +98,15 @@ static void set_qos_from_attributes(
     }
     qos.properties().binary_properties() = attr.properties.binary_properties();
 }
-
+/**
+ * @brief Construct a new Domain Participant Factory:: Domain Participant Factory object
+ * 域参与者工厂方法
+ */
 DomainParticipantFactory::DomainParticipantFactory()
     : default_xml_profiles_loaded(false)
     , default_participant_qos_(PARTICIPANT_QOS_DEFAULT)
 {
+    logError(DOMAINPARTICIPANT, "jifukui");
 }
 
 DomainParticipantFactory::~DomainParticipantFactory()
@@ -129,6 +133,11 @@ DomainParticipantFactory::~DomainParticipantFactory()
     eprosima::fastdds::dds::Log::KillThread();
 }
 
+/**
+ * @brief 
+ * 域参与者 获取实例
+ * @return DomainParticipantFactory* 
+ */
 DomainParticipantFactory* DomainParticipantFactory::get_instance()
 {
     /*
@@ -142,6 +151,7 @@ DomainParticipantFactory* DomainParticipantFactory::get_instance()
      * object on the constructor, just to ensure that the boost singleton is instantiated before the
      * DomainParticipantFactory.
      */
+    logError(DOMAINPARTICIPANT, "jifukui");
     struct AuxiliaryBoostFunctor
     {
         AuxiliaryBoostFunctor()
