@@ -379,7 +379,8 @@ endif()
 add_library(${PROJECT_NAME} ${${PROJECT_NAME}_source_files})
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
-
+#jifukui
+#输出设置打印信息
 option(INTERNAL_DEBUG "Activate developer debug messages" OFF)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE

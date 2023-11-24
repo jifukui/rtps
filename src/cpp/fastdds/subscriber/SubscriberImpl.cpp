@@ -111,6 +111,7 @@ SubscriberImpl::SubscriberImpl(
     , rtps_participant_(p->rtps_participant())
     , default_datareader_qos_(DATAREADER_QOS_DEFAULT)
 {
+    logError(PARTICIPANT, "jifukui SubscriberImpl");
     SubscriberAttributes sub_attr;
     XMLProfileManager::getDefaultSubscriberAttributes(sub_attr);
     set_qos_from_attributes(default_datareader_qos_, sub_attr);

@@ -54,6 +54,7 @@ bool DataSharingNotification::create_and_init_notification(
         const GUID_t& reader_guid,
         const std::string& shared_dir)
 {
+    logError(RTPS_TRANSPORT_SHM,"");
     if (shared_dir.empty())
     {
         return create_and_init_shared_segment_notification<fastdds::rtps::SharedMemSegment>(reader_guid,
@@ -70,6 +71,7 @@ bool DataSharingNotification::open_and_init_notification(
         const GUID_t& reader_guid,
         const std::string& shared_dir)
 {
+    logError(RTPS_TRANSPORT_SHM,"");
     if (shared_dir.empty())
     {
         return open_and_init_shared_segment_notification<fastdds::rtps::SharedMemSegment>(reader_guid,

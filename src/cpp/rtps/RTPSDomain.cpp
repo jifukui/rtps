@@ -100,7 +100,7 @@ RTPSParticipant* RTPSDomain::createParticipant(
         const RTPSParticipantAttributes& attrs,
         RTPSParticipantListener* listen)
 {
-    logInfo(RTPS_PARTICIPANT, "");
+    logError(RTPS_PARTICIPANT, "jifukui");
 
     RTPSParticipantAttributes PParam = attrs;
 

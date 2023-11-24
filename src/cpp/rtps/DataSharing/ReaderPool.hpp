@@ -147,6 +147,7 @@ public:
             const GUID_t& writer_guid,
             const std::string& shared_dir) override
     {
+        logError(RTPS_TRANSPORT_SHM,"jifukui");
         if (shared_dir.empty())
         {
             return init_shared_segment<fastdds::rtps::SharedMemSegment>(writer_guid, shared_dir);
