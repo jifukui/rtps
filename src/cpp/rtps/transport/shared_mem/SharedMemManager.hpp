@@ -969,6 +969,7 @@ public:
             uint32_t healthy_check_timeout_ms,
             SharedMemGlobal::Port::OpenMode open_mode = SharedMemGlobal::Port::OpenMode::ReadShared)
     {
+        logError(RTPS_TRANSPORT_SHM, "Opening port");
         return std::make_shared<Port>(this,
                        global_segment_.open_port(port_id, max_descriptors, healthy_check_timeout_ms, open_mode),
                        open_mode);

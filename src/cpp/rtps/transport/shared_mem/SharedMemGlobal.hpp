@@ -928,6 +928,7 @@ public:
             uint32_t healthy_check_timeout_ms,
             Port::OpenMode open_mode = Port::OpenMode::ReadShared)
     {
+        logError(RTPS_TRANSPORT_SHM, THREADID << "Opening port");
         return open_port_internal(port_id, max_buffer_descriptors, healthy_check_timeout_ms, open_mode, nullptr);
     }
 
@@ -941,6 +942,7 @@ public:
             std::shared_ptr<Port> port,
             SharedMemGlobal::Port::OpenMode open_mode)
     {
+        logError(RTPS_TRANSPORT_SHM, THREADID << "regenerate_port");
         return open_port_internal(
             port->port_id(),
             port->max_buffer_descriptors(),
@@ -980,8 +982,8 @@ private:
 
         auto port_segment_name = domain_name_ + "_port" + std::to_string(port_id);
 
-        logInfo(RTPS_TRANSPORT_SHM, THREADID << "Opening "
-                                             << port_segment_name);
+        logError(RTPS_TRANSPORT_SHM, THREADID << "Opening "
+                                             << port_segment_name<<" log "<<Log::GetVerbosity());
 
         std::unique_ptr<SharedMemSegment::named_mutex> port_mutex =
                 SharedMemSegment::open_or_create_and_lock_named_mutex(port_segment_name + "_mutex");
@@ -1014,6 +1016,8 @@ private:
             }
 
             // Try to open
+            logError(RTPS_TRANSPORT_SHM, THREADID << "re Opening "
+                                             << port_segment_name);
             auto port_segment = std::shared_ptr<SharedMemSegment>(
                 new SharedMemSegment(boost::interprocess::open_only, port_segment_name.c_str()));
 

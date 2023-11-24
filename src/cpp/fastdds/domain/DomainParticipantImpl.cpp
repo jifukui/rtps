@@ -172,7 +172,7 @@ DomainParticipantImpl::DomainParticipantImpl(
     std::cout<<"the status is 3"<<std::endl;
 #endif // ifndef LOG_NO_INFO
 
-    logInfo(PARTICIPANT, "jifukui log rest");
+    logError(PARTICIPANT, "jifukui log rest");
     PublisherAttributes pub_attr;
     XMLProfileManager::getDefaultPublisherAttributes(pub_attr);
     set_qos_from_attributes(default_pub_qos_, pub_attr);

@@ -257,7 +257,9 @@ void Log::KillThread()
         resources_.logging_thread.reset();
     }
 }
-
+/*
+*
+*/
 void Log::QueueLog(
         const std::string& message,
         const Log::Context& context,

@@ -264,6 +264,7 @@ public:
             size_t size)
         : SharedSegmentBase(name)
     {
+        logError(SHAREDSEGMENT, "create_only_t");
         segment_ = std::unique_ptr<managed_shared_memory_type>(
             new managed_shared_memory_type(boost::interprocess::create_only, name.c_str(),
             static_cast<Offset>(size + EXTRA_SEGMENT_SIZE)));
@@ -274,6 +275,7 @@ public:
             const std::string& name)
         : SharedSegmentBase(name)
     {
+        logError(SHAREDSEGMENT, "open_only_t:"<<name);
         segment_ = std::unique_ptr<managed_shared_memory_type>(
             new managed_shared_memory_type(boost::interprocess::open_only, name.c_str()));
     }
@@ -283,6 +285,7 @@ public:
             const std::string& name)
         : SharedSegmentBase(name)
     {
+        logError(SHAREDSEGMENT, "open_read_only_t:"<<name);
         segment_ = std::unique_ptr<managed_shared_memory_type>(
             new managed_shared_memory_type(boost::interprocess::open_read_only, name.c_str()));
     }
@@ -293,6 +296,7 @@ public:
             size_t size)
         : SharedSegmentBase(name)
     {
+        logError(SHAREDSEGMENT, "open_or_create_t:"<<name<<" size "<<size);
         segment_ = std::unique_ptr<managed_shared_memory_type>(
             new managed_shared_memory_type(boost::interprocess::create_only, name.c_str(), static_cast<Offset>(size)));
     }

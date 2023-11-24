@@ -305,6 +305,7 @@ SharedMemChannelResource* SharedMemTransport::CreateInputChannelResource(
         uint32_t maxMsgSize,
         TransportReceiverInterface* receiver)
 {
+    logError(RTPS_TRANSPORT_SHM, "maxMsgSize:"<<maxMsgSize);
     (void) maxMsgSize;
 
     // Multicast locators implies ReadShared (Multiple readers) ports.

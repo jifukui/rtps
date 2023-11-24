@@ -264,12 +264,11 @@ protected:
     ((defined(__INTERNALDEBUG) || defined(_INTERNALDEBUG)) && (defined(_DEBUG) || defined(__DEBUG) || \
     !defined(NDEBUG))))
 #define logInfo_(cat, msg)                                                                              \
-    {                                                                                                   \                                                                                  
+    {                                                                                                   \                                                                         
         using namespace eprosima::fastdds::dds;                                                         \
-        if (1)                                                     \
+        if (Log::GetVerbosity() >= Log::Kind::Info)                                                     \
         {                                                                                               \
-            std::stringstream fastdds_log_ss_tmp__;                                                     \
-            std::cout<<"jifukui test log info"<<std::endl;                                              \
+            std::stringstream fastdds_log_ss_tmp__;                                                     \                                             
             fastdds_log_ss_tmp__ << msg;                                                                \
             Log::QueueLog(fastdds_log_ss_tmp__.str(), Log::Context{__FILE__, __LINE__, __func__, #cat}, \
                     Log::Kind::Info);                                                                   \

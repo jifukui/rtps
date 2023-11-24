@@ -259,6 +259,8 @@ cmake_dependent_option(
     ON)
 
 message(STATUS "LOG_NO_INFO:  " ${LOG_NO_INFO})
+message(STATUS "LOG_NO_WARNING:  " ${LOG_NO_WARNING})
+message(STATUS "LOG_NO_ERROR:  " ${LOG_NO_ERROR})
 if(LOG_NO_INFO)
     set(HAVE_LOG_NO_INFO 1)
 else()
